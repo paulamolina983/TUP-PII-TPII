@@ -1,17 +1,13 @@
-from estudiante import *
 
 
-class Usuario(Estudiante):
-    #Tengo dudas si es con doble guion bajo o con solo uno
+class Usuario():
     def __init__(self, nombre: str, apellido: str, email: str, contrasenia: str):
-        super().__init__()
         self.__nombre = nombre
         self.__apellido = apellido
         self.__email = email
         self.__contrasenia = contrasenia
 
     @property
-    #¿aca se ponia nombre o __nombre?
     def nombre(self):
         return self.__nombre
     
@@ -42,3 +38,19 @@ class Usuario(Estudiante):
     @contrasenia.setter
     def contrasenia(self, nuevo_contrasenia):
         self.__contrasenia = nuevo_contrasenia
+
+    def __str__(self):
+        print("DATOS USUARIO")
+        print(f"Nombre: {self.nombre}")
+        print(f"Apellido: {self.apellido}")
+        print(f"E-mail: {self.email}")
+        print("------------")
+
+    def validar_credenciales(self, email_ingresado: str, contrasenia_ingresada: str):
+
+        if (self.email == email_ingresado) & (self.contrasenia == contrasenia_ingresada):
+            return True
+        else:
+            print("Usuario o contraseña incorrectos") 
+            return False
+
